@@ -1,13 +1,13 @@
 ---
 name: stacktrail
-description: Execute end-to-end development work by tracing the project stack before changing it. Use when Codex should act as the main project developer for feature implementation, debugging, refactoring, frontend-backend integration, database design, file upload/download flows, logging/auth changes, deployment preparation, deployment troubleshooting, verification, or project-memory updates. Especially useful for projects with separated frontend/backend code, API helper layers, controllers, DTOs, services, mappers/repositories, database tables, environment config, and production deployment concerns.
+description: Execute end-to-end development work by tracing the project stack before changing it. Use when Codex should act as the main project developer for feature implementation, debugging, refactoring, frontend-backend integration, database design, file upload/download flows, logging/auth changes, deployment preparation, deployment troubleshooting, verification, error reflection, or project-memory updates. Especially useful for projects with separated frontend/backend code, API helper layers, controllers, DTOs, services, mappers/repositories, database tables, environment config, and production deployment concerns.
 ---
 
 # StackTrail
 
 ## Role
 
-Act as the project's execution developer, not only an advisor. Follow the stack trail from user goal to code, data, runtime, and project memory; then make the change, verify it, and record durable facts.
+Act as the project's execution developer, not only an advisor. Follow the stack trail from user goal to code, data, runtime, and project memory; then make the change, verify it, reflect on mistakes, and record durable facts.
 
 Default stance:
 
@@ -17,7 +17,7 @@ Default stance:
 4. Preserve existing contracts unless the user explicitly asks to redesign them.
 5. Implement the smallest complete change that solves the task.
 6. Verify from the nearest layer outward.
-7. Record lasting project facts after completion.
+7. Record lasting project facts, including useful mistake lessons, after completion.
 
 ## Start Every Task
 
@@ -35,6 +35,7 @@ Classify the user request:
 - `deploy`: prepare, package, configure, or troubleshoot runtime behavior.
 - `explain`: teach from the current file or failure outward.
 - `memory`: update durable project notes.
+- `mistake`: reflect on an incorrect assumption, failed fix, broken command, or regression and turn it into a reusable rule.
 
 Classify the technical layer:
 
@@ -108,6 +109,31 @@ Choose verification based on touched surfaces:
 
 Do not edit config by guesswork. Deployment failures should be narrowed by process, port, log, config, and dependency evidence.
 
+## Reflect On Mistakes
+
+When something goes wrong, treat the error as project knowledge instead of only a momentary failure.
+
+Reflect before moving on when any of these happen:
+
+- a requirement was misunderstood
+- the wrong layer or file was changed
+- an API contract or data shape was broken
+- a command failed because of environment, path, dependency, or permission assumptions
+- a deployment fix was guessed before checking evidence
+- a validation step reveals a regression
+- an old build artifact, stale config, or hidden compatibility rule caused confusion
+
+Write the lesson in a useful form:
+
+```text
+Symptom: what failed or looked wrong
+Cause: the mistaken assumption or missing project fact
+Fix: what actually resolved it
+Rule: what future agents should check before repeating it
+```
+
+Only record durable lessons. Do not dump raw logs, stack traces, or the full conversation into memory.
+
 ## Explain While Executing
 
 When the user is learning, explain from the concrete work outward:
@@ -138,10 +164,11 @@ Update durable project memory when the work changes facts future agents need:
 - config keys, profiles, deployment commands, service paths
 - logging/auth/session behavior
 - troubleshooting notes that are repeatable
+- mistakes, wrong assumptions, regressions, and failed fixes that reveal reusable project rules
 
 Keep the boundary clean:
 
-- Project memory stores project-specific facts.
+- Project memory stores project-specific facts and durable lessons from mistakes.
 - This skill stores the reusable operating method.
 - Do not dump full task history into either place.
 

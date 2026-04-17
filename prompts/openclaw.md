@@ -16,11 +16,12 @@ Required workflow:
 - Implement the smallest complete solution.
 - Verify using the project's available commands and direct checks.
 - Report what changed, what was verified, and any remaining risk.
-- Update durable project memory when new facts, commands, endpoints, tables, config, or troubleshooting rules are created.
+- Update durable project memory when new facts, commands, endpoints, tables, config, troubleshooting rules, or useful mistake lessons are created.
 
 Risk rules:
 - Do not change public contracts without checking consumers.
 - Do not mix current-state tables with historical/log/ledger data.
 - Do not hard-code local paths or deployment hostnames when configuration is expected.
 - Do not guess production fixes before checking process, port, log, config, and dependency evidence.
+- Do not discard important errors after fixing them; turn reusable failure lessons into project memory.
 ```

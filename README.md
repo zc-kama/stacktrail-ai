@@ -2,7 +2,7 @@
 
 Trace the stack. Ship the change.
 
-StackTrail is a portable AI development workflow for real application projects. It helps coding agents act like execution developers: read the project memory, trace the path through the stack, make the smallest complete change, verify the touched layers, and record durable project facts.
+StackTrail is a portable AI development workflow for real application projects. It helps coding agents act like execution developers: read the project memory, trace the path through the stack, make the smallest complete change, verify the touched layers, reflect on mistakes, and record durable project facts and lessons.
 
 It is designed for full-stack and production-shaped work where a request may cross UI components, API clients, controllers, DTOs, services, repositories or mappers, database tables, files, logs, environment config, and deployment.
 
@@ -23,7 +23,7 @@ UI/component
  -> UI state
 ```
 
-The goal is not more ceremony. The goal is fewer broken contracts, fewer guessed deployment fixes, and more changes that actually run.
+The goal is not more ceremony. The goal is fewer broken contracts, fewer guessed deployment fixes, fewer repeated mistakes, and more changes that actually run.
 
 ## What Is Included
 
@@ -69,7 +69,23 @@ Paste one of the prompt variants into the relevant project instruction file:
 - Preserve existing contracts unless redesign is explicit.
 - Implement the smallest complete solution.
 - Verify by the layers touched.
-- Update durable project memory when facts change.
+- Reflect on important errors and wrong assumptions.
+- Update durable project memory when facts or reusable mistake lessons change.
+
+## Error Reflection
+
+StackTrail treats useful mistakes as project knowledge.
+
+When an error reveals a reusable rule, record it in project memory:
+
+```text
+Symptom: what failed or looked wrong
+Cause: the mistaken assumption or missing project fact
+Fix: what actually resolved it
+Rule: what future agents should check before repeating it
+```
+
+Record lessons from misunderstood requirements, wrong-layer edits, broken API contracts, failed commands, stale config, deployment guesses, regressions, and hidden compatibility rules. Keep raw logs and full transcripts out of memory unless a short excerpt is necessary.
 
 ## License
 

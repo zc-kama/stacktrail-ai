@@ -10,7 +10,7 @@ Use these checklists as targeted reminders while working inside real application
 - Confirm HTTP method, route, parameter names, auth location, response shape, pagination/count, and frontend field usage.
 - Implement the smallest complete path that preserves current contracts.
 - Verify the touched layers with compile/build/tests/smoke checks.
-- Update project memory with durable facts after completion.
+- Update project memory with durable facts and useful mistake lessons after completion.
 
 ## Frontend And API Contract
 
@@ -53,6 +53,14 @@ Use these checklists as targeted reminders while working inside real application
 - Distinguish package-manager-installed service paths from manually/source-installed service paths.
 - Treat commands that disable protections or kill broad process groups as diagnostic or temporary unless the user explicitly chooses a permanent operations change.
 
+## Error Reflection
+
+- Capture important mistakes, not just successful decisions.
+- Record misunderstood requirements, wrong-layer edits, broken API contracts, failed commands, deployment guesses, stale build artifacts, and regressions when they teach a reusable lesson.
+- Convert each mistake into a durable note with `Symptom`, `Cause`, `Fix`, and `Rule`.
+- Keep raw logs and long stack traces out of project memory unless a short excerpt is necessary.
+- Do not blame the tool or user. Record the operational lesson future agents can use.
+
 ## Common Mistakes
 
 - Treating a visible UI request as frontend-only before checking the backend/data path.
@@ -64,4 +72,4 @@ Use these checklists as targeted reminders while working inside real application
 - Using relative upload/log paths that depend on the process working directory.
 - Forgetting old build artifacts can mask current source config.
 - Mislabeling timing logs as raw SQL/database logs.
-- Updating project memory with narrative history instead of durable, actionable facts.
+- Updating project memory with narrative history instead of durable, actionable facts and mistake lessons.

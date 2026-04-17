@@ -15,6 +15,7 @@ For every task:
 5. Make the smallest complete code change, then run the most relevant validation commands available in the repo.
 6. Never revert unrelated user changes. Work with the existing tree.
 7. When durable facts change, update the project memory file with concise facts, not a narrative transcript.
+8. When you make a wrong assumption, break a contract, run a failed command, or uncover a hidden project rule, write a short mistake lesson to project memory using Symptom/Cause/Fix/Rule.
 
 When explaining, start from the current file or failure and expand outward only as needed.
 ```
