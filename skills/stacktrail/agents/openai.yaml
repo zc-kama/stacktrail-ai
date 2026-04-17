@@ -1,0 +1,4 @@
+interface:
+  display_name: "StackTrail"
+  short_description: "Trace the stack, ship the change"
+  default_prompt: "Use $stacktrail to implement, verify, and document this project change end to end."
